@@ -5,11 +5,15 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
-abstract class BindingActivity<DataBinding : ViewDataBinding>(@LayoutRes val layoutId: Int): BaseActivity() {
-    private lateinit var binding: DataBinding
+abstract class BindingActivity<DataBinding : ViewDataBinding>(@LayoutRes val layoutId: Int) :
+    BaseActivity() {
+    protected lateinit var binding: DataBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DataBindingUtil.setContentView<DataBinding>(this, layoutId).also { binding = it }
+        viewBinding()
     }
+
+    protected abstract fun viewBinding()
 }

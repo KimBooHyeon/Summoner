@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/bg_dark_grey_round_12.xml" value="0.2609375" />
         <entry key="app/src/main/res/drawable/bg_soft_blue_round_20.xml" value="0.2609375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/row_header.xml" value="0.24479166666666666" />
         <entry key="app/src/main/res/layout/row_summoner_info.xml" value="0.33" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2609375" />
       </map>

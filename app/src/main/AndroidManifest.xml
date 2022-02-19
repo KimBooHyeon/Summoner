@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar">
         <activity
-            android:name="com.opgg.summoner.ui.MainActivity"
+            android:name="com.opgg.summoner.ui.SummonerActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
