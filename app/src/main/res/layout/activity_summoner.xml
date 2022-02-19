@@ -26,11 +26,15 @@
                 app:expandedTitleTextAppearance="@android:color/transparent"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.name}"/>
                 <include
                     layout="@layout/row_header"
                     app:thumbnail="@{vm.profileImageUrl}"
                     app:level="@{vm.level}"
-                    app:nickname="@{vm.name}" />
+                    app:nickname="@{vm.name}"/>
 
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
