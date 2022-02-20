@@ -8,5 +8,7 @@ data class League(
 
 data class TierRank (
     var name: String = "",
+    var tier: String = "",
+    var lp: Int = 0,
     var imageUrl: String = "",
 )

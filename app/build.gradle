@@ -18,7 +18,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "BASE_URL", '"https://codingtest.op.gg/api"'
+        buildConfigField "String", "BASE_URL", '"https://codingtest.op.gg/api/"'
     }
 
     buildTypes {
@@ -71,6 +71,7 @@ dependencies {
     // Retrofit + OkHttp
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofit_version"
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
 
     // ViewModel

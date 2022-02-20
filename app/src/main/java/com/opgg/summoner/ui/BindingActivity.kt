@@ -1,18 +1,19 @@
 package com.opgg.summoner.ui
 
-import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
-abstract class BindingActivity<DataBinding : ViewDataBinding>(@LayoutRes val layoutId: Int) :
-    BaseActivity() {
+abstract class BindingActivity<DataBinding : ViewDataBinding>(@LayoutRes val layoutId: Int): BaseActivity() {
     protected lateinit var binding: DataBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        DataBindingUtil.setContentView<DataBinding>(this, layoutId).also { binding = it }
+    override fun onCreatedView() {
+        DataBindingUtil.setContentView<DataBinding>(this, layoutId).also {
+            binding = it
+            binding.lifecycleOwner = this
+        }
         viewBinding()
+        init()
     }
 
     protected abstract fun viewBinding()

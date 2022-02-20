@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="vm"
             type="com.opgg.summoner.ui.SummonerVM" />
@@ -31,10 +30,11 @@
                     android:layout_height="wrap_content"
                     android:text="@{vm.name}"/>
                 <include
-                    layout="@layout/row_header"
+                    layout="@layout/layer_header"
                     app:thumbnail="@{vm.profileImageUrl}"
                     app:level="@{vm.level}"
-                    app:nickname="@{vm.name}"/>
+                    app:nickname="@{vm.name}"
+                    app:backgroundImage="@{vm.profileBackgroundImageUrl}"/>
 
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"

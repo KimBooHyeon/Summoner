@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">Summoner</string>
-    <string name="nickname">Nickname</string>
     <string name="button_score_refresh">전적갱신</string>
 </resources>

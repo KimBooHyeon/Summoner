@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -11,6 +12,9 @@
             type="Integer" />
         <variable
             name="nickname"
+            type="String" />
+        <variable
+            name="backgroundImage"
             type="String" />
     </data>
 
@@ -35,7 +39,8 @@
                 android:layout_height="72dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:imageFromUrl="@{thumbnail}"/>
+                app:imageFromUrl="@{thumbnail}"
+                tools:src="@mipmap/ic_launcher_round"/>
 
             <TextView
                 android:id="@+id/tv_level"
@@ -49,6 +54,7 @@
                 android:text="@{level.toString()}"
                 android:textColor="@color/white"
                 android:textSize="12sp"
+                tools:text="level"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent" />
@@ -70,6 +76,7 @@
                 android:textColor="@color/dark_grey"
                 android:textSize="22sp"
                 android:textStyle="bold"
+                tools:text="nickname"
                 app:layout_constraintLeft_toRightOf="@id/layout_thumbnail"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,6 +84,7 @@
                 android:layout_width="89dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="8dp"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:background="@drawable/bg_soft_blue_round_20"
                 android:text="@string/button_score_refresh"
                 android:textColor="@color/white"
@@ -84,5 +92,14 @@
                 app:layout_constraintLeft_toRightOf="@id/layout_thumbnail"
                 app:layout_constraintTop_toBottomOf="@id/tv_nickname"/>
         </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/row_league"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

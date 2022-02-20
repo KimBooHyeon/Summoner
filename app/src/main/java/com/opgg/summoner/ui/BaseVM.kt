@@ -1,27 +1,16 @@
 package com.opgg.summoner.ui
 
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.ViewModel
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.request.RequestOptions
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 abstract class BaseVM : ViewModel() {
+    private val compositeDisposable by lazy { CompositeDisposable() }
 
-}
+    protected fun Disposable.addToDisposable(): Disposable = apply { compositeDisposable.add(this) }
 
-@BindingAdapter("imageFromUrl")
-fun ImageView.imageFromUrl(imageUrl: String?) {
-    if (!imageUrl.isNullOrEmpty()) {
-        Glide.with(context)
-            .load(imageUrl)
-            .apply(
-                RequestOptions.bitmapTransform(CenterCrop())
-            )
-            .circleCrop()
-            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-            .into(this)
+    override fun onCleared() {
+        compositeDisposable.clear()
+        super.onCleared()
     }
 }

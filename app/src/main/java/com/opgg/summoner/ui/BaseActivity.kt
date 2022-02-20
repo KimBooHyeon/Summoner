@@ -10,9 +10,18 @@ abstract class BaseActivity : AppCompatActivity() {
     private val compositeDisposable by lazy { CompositeDisposable() }
     protected fun Disposable.addToDisposable(): Disposable = apply { compositeDisposable.add(this) }
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    val mGlobal: Global by lazy { Global.INSTANCE }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        onCreatedView()
     }
+
+    open fun onCreatedView() {
+        init()
+    }
+
+    protected abstract fun init()
 
     override fun onDestroy() {
         compositeDisposable.clear()
