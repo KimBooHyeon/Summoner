@@ -32,10 +32,7 @@
                 <include
                     android:id="@+id/layout_header"
                     layout="@layout/layer_header"
-                    app:thumbnail="@{vm.profileImageUrl}"
-                    app:level="@{vm.level}"
-                    app:nickname="@{vm.name}"
-                    app:backgroundImage="@{vm.profileBackgroundImageUrl}"/>
+                    app:vm="@{vm}"/>
 
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"

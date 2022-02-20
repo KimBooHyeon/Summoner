@@ -34,8 +34,9 @@ class LeagueAdapter: BaseAdapter<LeagueViewHolder>() {
         return items.size
     }
 
-    open fun addItem(item: League) {
-        items.add(item)
-        notifyItemInserted(itemCount - 1)
+    fun setItem(leagues: MutableList<League>) {
+        items.clear()
+        items.addAll(leagues)
+        notifyDataSetChanged()
     }
 }

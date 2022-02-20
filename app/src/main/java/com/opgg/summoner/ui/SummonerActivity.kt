@@ -19,17 +19,11 @@ class SummonerActivity : BindingActivity<ActivitySummonerBinding>(R.layout.activ
     }
 
     override fun init() {
-        binding.layoutHeader.listLeague.adapter = adapter
         binding.appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            binding.tvToolbarTitle.visibility = if (abs(verticalOffset) != appBarLayout.totalScrollRange) View.INVISIBLE else View.VISIBLE
+            binding.tvToolbarTitle.visibility =
+                if (abs(verticalOffset) != appBarLayout.totalScrollRange) View.INVISIBLE else View.VISIBLE
         })
 
-        vm.getSummonerInfo("Genetory")
-            .subscribe({
-                vm.leagues.value = it.leagues
-                it.leagues.forEach { league ->
-                    adapter.addItem(league)
-                }
-            }, { t -> t.printStackTrace() })
+        binding.layoutHeader.listLeague.adapter = adapter
     }
 }

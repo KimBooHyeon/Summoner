@@ -4,21 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="com.opgg.summoner.ui.SummonerVM" />
         <variable
-            name="thumbnail"
-            type="String" />
-        <variable
-            name="level"
-            type="Integer" />
-        <variable
-            name="nickname"
-            type="String" />
-        <variable
-            name="backgroundImage"
-            type="String" />
-        <variable
-            name="holderVM"
-            type="com.opgg.summoner.adapter.viewholder.LeagueViewHolderVM" />
+            name="vm"
+            type="com.opgg.summoner.ui.SummonerVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,7 +31,7 @@
                 android:layout_height="72dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:imageFromUrl="@{thumbnail}"
+                app:imageFromUrl="@{vm.profileImageUrl}"
                 tools:src="@mipmap/ic_launcher_round"/>
 
             <TextView
@@ -54,7 +43,7 @@
                 android:paddingTop="3dp"
                 android:paddingRight="6dp"
                 android:paddingBottom="3dp"
-                android:text="@{level.toString()}"
+                android:text="@{String.valueOf(vm.level)}"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 tools:text="level"
@@ -75,7 +64,7 @@
                 android:id="@+id/tv_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{nickname}"
+                android:text="@{vm.name}"
                 android:textColor="@color/dark_grey"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -83,7 +72,8 @@
                 app:layout_constraintLeft_toRightOf="@id/layout_thumbnail"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_refresh"
                 android:layout_width="89dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="8dp"
@@ -106,6 +96,7 @@
             app:layout_constraintLeft_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:leagues="@{vm.leagues}"
             tools:listitem="@layout/row_league"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
