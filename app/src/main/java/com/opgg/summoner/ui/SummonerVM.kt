@@ -16,7 +16,7 @@ class SummonerVM @Inject constructor() : BaseVM() {
     var level = MutableLiveData<Int>()
     var profileImageUrl = MutableLiveData<String>()
     var profileBackgroundImageUrl: String = ""
-    var leagues: MutableList<League> = mutableListOf()
+    var leagues = MutableLiveData<MutableList<League>>()
 
     fun getSummonerInfo(nickname: String): Observable<Summoner> =
         DataRequest.api().getSummonerInfo(nickname)

@@ -16,11 +16,19 @@ class SummonerActivity : BindingActivity<ActivitySummonerBinding>(R.layout.activ
     }
 
     override fun init() {
+        binding.layoutHeader.listLeague.adapter = adapter
+
         vm.getSummonerInfo("Genetory")
             .subscribe({
+                vm.leagues.value = it.leagues
                 it.leagues.forEach { league ->
                     adapter.addItem(league)
                 }
             }, { t -> t.printStackTrace() })
+        /*vm.leagues.observe(this, Observer {
+            it.forEach { league ->
+                adapter.addItem(league)
+            }
+        })*/
     }
 }

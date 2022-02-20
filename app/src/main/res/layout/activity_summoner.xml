@@ -30,6 +30,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{vm.name}"/>
                 <include
+                    android:id="@+id/layout_header"
                     layout="@layout/layer_header"
                     app:thumbnail="@{vm.profileImageUrl}"
                     app:level="@{vm.level}"

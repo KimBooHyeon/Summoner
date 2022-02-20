@@ -3,6 +3,7 @@ package com.opgg.summoner.network.models
 data class League(
     var wins: Int = 0,
     var losses: Int = 0,
+    var lp: Int = 0,
     var tierRank: TierRank = TierRank("", "")
 )
 

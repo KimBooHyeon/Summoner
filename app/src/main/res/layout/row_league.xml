@@ -10,7 +10,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="240dp"
         android:layout_height="82dp"
-        android:layout_marginStart="8dp"
         android:background="@drawable/border_pale_grey_two">
         <ImageView
             android:id="@+id/iv_tier_thumbnail"

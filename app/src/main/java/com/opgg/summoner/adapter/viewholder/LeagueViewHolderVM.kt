@@ -1,5 +1,6 @@
 package com.opgg.summoner.adapter.viewholder
 
+import android.util.Log
 import com.opgg.summoner.network.models.League
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.text.DecimalFormat
@@ -16,17 +17,16 @@ class LeagueViewHolderVM @Inject constructor(item: League) {
     var thumbnail: String = item.tierRank.imageUrl
 
     fun lp(): String {
-        return DecimalFormat("#,###").format(lp)
+        return "${DecimalFormat("#,###").format(lp)} LP"
     }
 
     fun score(): String {
         var percentage = 0
         try {
-            percentage = wins / (wins + losses) * 100
-            percentage = round(percentage.toDouble()).toInt()
+            percentage = wins.times(100).div(wins + losses)
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        return "{$wins}승 {$losses}패 ({$percentage}%)"
+        return "${wins}승 ${losses}패 (${percentage}%)"
     }
 }

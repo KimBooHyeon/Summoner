@@ -16,6 +16,9 @@
         <variable
             name="backgroundImage"
             type="String" />
+        <variable
+            name="holderVM"
+            type="com.opgg.summoner.adapter.viewholder.LeagueViewHolderVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -93,10 +96,13 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_nickname"/>
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_league"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="82dp"
-            android:layout_marginStart="8dp"
+            android:clipToPadding="false"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:layout_constraintLeft_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
