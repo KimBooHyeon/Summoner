@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.opgg.summoner.adapter.viewholder.LeagueViewHolder
-import com.opgg.summoner.databinding.RowLeagueBinding
+import com.opgg.summoner.databinding.ItemLeagueBinding
 import com.opgg.summoner.network.models.League
 import com.opgg.summoner.ui.Global
 
@@ -14,7 +14,7 @@ class LeagueAdapter: BaseAdapter<LeagueViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueViewHolder {
         context = parent.context
-        RowLeagueBinding.inflate(LayoutInflater.from(parent.context), parent, false).let {
+        ItemLeagueBinding.inflate(LayoutInflater.from(parent.context), parent, false).let {
             val holder = LeagueViewHolder(it)
             it.lifecycleOwner = holder
             return holder

@@ -97,6 +97,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:leagues="@{vm.leagues}"
-            tools:listitem="@layout/row_league"/>
+            tools:listitem="@layout/item_league"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
