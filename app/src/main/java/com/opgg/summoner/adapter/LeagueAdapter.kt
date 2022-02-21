@@ -3,14 +3,21 @@ package com.opgg.summoner.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.opgg.summoner.adapter.viewholder.LeagueViewHolder
+import com.opgg.summoner.adapter.viewholder.BaseViewHolder
+import com.opgg.summoner.adapter.viewholder.LeagueViewHolderVM
 import com.opgg.summoner.databinding.ItemLeagueBinding
 import com.opgg.summoner.network.models.League
 import com.opgg.summoner.ui.Global
 
-class LeagueAdapter: BaseAdapter<LeagueViewHolder>() {
+class LeagueAdapter: BaseAdapter<LeagueAdapter.LeagueViewHolder>() {
     private val items: MutableList<League> = mutableListOf()
     lateinit var context: Context
+
+    inner class LeagueViewHolder(private val binding: ItemLeagueBinding): BaseViewHolder(binding) {
+        fun bindView(item: League) {
+            binding.vm = LeagueViewHolderVM(item)
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueViewHolder {
         context = parent.context

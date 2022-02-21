@@ -1,11 +1,9 @@
 package com.opgg.summoner.adapter.viewholder
 
-import android.util.Log
 import com.opgg.summoner.network.models.League
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.text.DecimalFormat
 import javax.inject.Inject
-import kotlin.math.round
 
 @HiltViewModel
 class LeagueViewHolderVM @Inject constructor(item: League) {

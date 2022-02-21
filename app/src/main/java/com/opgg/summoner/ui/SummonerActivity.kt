@@ -4,6 +4,7 @@ import android.view.View
 import androidx.activity.viewModels
 import com.google.android.material.appbar.AppBarLayout
 import com.opgg.summoner.R
+import com.opgg.summoner.adapter.GameAdapter
 import com.opgg.summoner.adapter.LeagueAdapter
 import com.opgg.summoner.databinding.ActivitySummonerBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,7 +13,6 @@ import kotlin.math.abs
 @AndroidEntryPoint
 class SummonerActivity : BindingActivity<ActivitySummonerBinding>(R.layout.activity_summoner) {
     private val vm: SummonerVM by viewModels()
-    private val adapter: LeagueAdapter by lazy { LeagueAdapter() }
 
     override fun viewBinding() {
         binding.vm = vm
@@ -24,6 +24,7 @@ class SummonerActivity : BindingActivity<ActivitySummonerBinding>(R.layout.activ
                 if (abs(verticalOffset) != appBarLayout.totalScrollRange) View.INVISIBLE else View.VISIBLE
         })
 
-        binding.layoutHeader.listLeague.adapter = adapter
+        binding.list.adapter = GameAdapter()
+        binding.layoutHeader.listLeague.adapter = LeagueAdapter()
     }
 }

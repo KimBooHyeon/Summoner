@@ -16,6 +16,6 @@ interface ApiDataInterface {
     @GET("summoner/{nickname}/matches")
     fun getSummonerGameInfo(
         @Path("nickname") nickname: String,
-        @Query("lastMatch") lastMatch: String,
+        @Query("lastMatch") lastMatch: Long,
     ): Observable<ResponseGame>
 }
