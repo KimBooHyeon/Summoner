@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import com.opgg.summoner.adapter.viewholder.BaseViewHolder
 import com.opgg.summoner.databinding.ItemGameBinding
 import com.opgg.summoner.network.models.Game
-import com.opgg.summoner.ui.SummonerVM
 
 class GameAdapter: BaseAdapter<GameAdapter.GameViewHolder>() {
     private val items: MutableList<Game> = mutableListOf()
@@ -13,7 +12,7 @@ class GameAdapter: BaseAdapter<GameAdapter.GameViewHolder>() {
 
     inner class GameViewHolder(private val binding: ItemGameBinding): BaseViewHolder(binding) {
         fun bindView(item: Game) {
-            binding.vm = SummonerVM()
+            binding.item = item
         }
     }
 

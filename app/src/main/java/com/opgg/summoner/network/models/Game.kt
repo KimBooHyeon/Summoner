@@ -3,8 +3,10 @@ package com.opgg.summoner.network.models
 data class Game(
     var champion: Champion,
     var spells: MutableList<ImageUrl>,
+    var peak: MutableList<String>,
     var items: MutableList<ImageUrl>,
     var stats: Stats,
+    var gameType: String,
     var isWin: Boolean,
 ) {
     data class Champion(

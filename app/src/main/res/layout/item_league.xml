@@ -19,7 +19,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:imageFromUrl="@{vm.thumbnail}"
+            app:image="@{vm.thumbnail}"
             tools:src="@mipmap/ic_launcher_round"/>
         <LinearLayout
             android:orientation="vertical"

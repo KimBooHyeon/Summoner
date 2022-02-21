@@ -31,7 +31,7 @@
                 android:layout_height="72dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:imageFromUrl="@{vm.profileImageUrl}"
+                app:image_circle="@{vm.profileImageUrl}"
                 tools:src="@mipmap/ic_launcher_round"/>
 
             <TextView
