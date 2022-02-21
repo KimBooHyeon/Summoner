@@ -23,8 +23,9 @@ class SummonerActivity : BindingActivity<ActivitySummonerBinding>(R.layout.activ
             binding.tvToolbarTitle.visibility =
                 if (abs(verticalOffset) != appBarLayout.totalScrollRange) View.INVISIBLE else View.VISIBLE
         })
-
-        binding.list.adapter = GameAdapter()
+        binding.list.let {
+            it.adapter = GameAdapter()
+        }
         binding.layoutHeader.listLeague.adapter = LeagueAdapter()
     }
 }

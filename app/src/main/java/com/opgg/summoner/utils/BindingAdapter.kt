@@ -1,10 +1,10 @@
 package com.opgg.summoner.utils
 
+import android.text.Html
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -13,25 +13,21 @@ import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.opgg.summoner.R
 import com.opgg.summoner.adapter.GameAdapter
 import com.opgg.summoner.adapter.LeagueAdapter
-import com.opgg.summoner.databinding.ItemGameBinding
 import com.opgg.summoner.databinding.ItemImageRoundedBinding
 import com.opgg.summoner.network.models.Game
 import com.opgg.summoner.network.models.League
-import com.opgg.summoner.ui.Global
+import com.opgg.summoner.Global
 
 @BindingAdapter("image")
 fun ImageView.image(imageUrl: String?) {
-    if (!imageUrl.isNullOrEmpty()) {
-        Glide.with(context)
-            .load(imageUrl)
-            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-            .into(this)
-    }
+    Glide.with(context)
+        .load(imageUrl)
+        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+        .into(this)
 }
 
 @BindingAdapter("image_circle")
@@ -60,6 +56,51 @@ fun ImageView.imageRound(src: String?) {
         .into(this)
 }
 
+@BindingAdapter("game_length")
+fun TextView.setGameLength(seconds: Int) {
+    val formatted = "${(seconds / 60).toString().padStart(2, '0')}:${(seconds % 60).toString().padStart(2, '0')}"
+    text = formatted
+}
+
+@BindingAdapter("kill", "assist", "death")
+fun TextView.setScore(kill: String, assist: String, death: String) {
+    val assistHtmlString = "<font color='#E84057'>$assist</font>"
+    text = Html.fromHtml("$kill / $assistHtmlString / $death")
+}
+
+@BindingAdapter("format_time_string")
+fun TextView.setFormatTimeString(time: Long) {
+    val currentTime = System.currentTimeMillis()
+    var diffTime = (currentTime / 1000) - time
+    if (diffTime < Constants.MAX_SEC) {
+        text = String.format(context.getString(R.string.time_seconds_ago))
+        return
+    }
+    diffTime /= Constants.MAX_SEC
+    if (diffTime < Constants.MAX_MIN) {
+        text = String.format(context.getString(R.string.time_minutes_ago), diffTime)
+        return
+    }
+    diffTime /= Constants.MAX_MIN
+    if (diffTime < Constants.MAX_HOUR) {
+        text = String.format(context.getString(R.string.time_hours_ago), diffTime)
+        return
+    }
+    diffTime /= Constants.MAX_HOUR
+    if (diffTime < Constants.MAX_DAY) {
+        text = String.format(context.getString(R.string.time_days_ago), diffTime)
+        return
+    }
+    diffTime /= Constants.MAX_DAY
+    if (diffTime < Constants.MAX_MONTH) {
+        text = String.format(context.getString(R.string.time_months_ago), diffTime)
+        return
+    } else {
+        diffTime /= Constants.MAX_MONTH
+        text = String.format(context.getString(R.string.time_years_ago), diffTime)
+    }
+}
+
 @BindingAdapter("item_images")
 fun LinearLayout.itemImages(items: MutableList<Game.ImageUrl>) {
     this.removeAllViews()
@@ -73,7 +114,6 @@ fun LinearLayout.itemImages(items: MutableList<Game.ImageUrl>) {
         }
         this.addView(binding.root)
     }
-    Global.INSTANCE.dLog("size : ${this.childCount}")
 }
 
 @BindingAdapter("leagues")

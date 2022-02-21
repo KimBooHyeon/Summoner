@@ -17,6 +17,7 @@ class SummonerVM @Inject constructor() : BaseVM() {
     var name = MutableLiveData<String>()
     var level = MutableLiveData<Int>()
     var profileImageUrl = MutableLiveData<String>()
+    var profileBackgroundImageUrl = MutableLiveData<String>()
     var leagues = MutableLiveData<MutableList<League>>().apply { value = mutableListOf() }
     var games = MutableLiveData<MutableList<Game>>().apply { value = mutableListOf() }
     var lastMatch: Long = 0
@@ -34,6 +35,7 @@ class SummonerVM @Inject constructor() : BaseVM() {
                 name.value = it.summoner.name
                 level.value = it.summoner.level
                 profileImageUrl.value = it.summoner.profileImageUrl
+                profileBackgroundImageUrl.value = it.summoner.profileBackgroundImageUrl
                 leagues.value = it.summoner.leagues
             }, { t -> t.printStackTrace()})
     }

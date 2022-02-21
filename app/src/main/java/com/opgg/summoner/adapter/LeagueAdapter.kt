@@ -7,7 +7,7 @@ import com.opgg.summoner.adapter.viewholder.BaseViewHolder
 import com.opgg.summoner.adapter.viewholder.LeagueViewHolderVM
 import com.opgg.summoner.databinding.ItemLeagueBinding
 import com.opgg.summoner.network.models.League
-import com.opgg.summoner.ui.Global
+import com.opgg.summoner.Global
 
 class LeagueAdapter: BaseAdapter<LeagueAdapter.LeagueViewHolder>() {
     private val items: MutableList<League> = mutableListOf()

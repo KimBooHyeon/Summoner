@@ -6,6 +6,8 @@ data class Game(
     var peak: MutableList<String>,
     var items: MutableList<ImageUrl>,
     var stats: Stats,
+    var createDate: Long,
+    var gameLength: Int,
     var gameType: String,
     var isWin: Boolean,
 ) {
@@ -24,7 +26,7 @@ data class Game(
         data class General(
             var kill: Int,
             var death: Int,
-            var asist: Int,
+            var assist: Int,
             var contributionForKillRate: String,
             var largestMultiKillString: String,
             var opScoreBadge: String
