@@ -24,7 +24,7 @@ class SummonerVM @Inject constructor() : BaseVM() {
 
     init {
         getSummonerInfo("Genetory")
-        getGameList("Genetory")
+        getMatchList("Genetory")
     }
 
     fun getSummonerInfo(nickname: String) {
@@ -40,7 +40,7 @@ class SummonerVM @Inject constructor() : BaseVM() {
             }, { t -> t.printStackTrace()})
     }
 
-    fun getGameList(nickname: String) {
+    fun getMatchList(nickname: String) {
         DataRequest.api().getSummonerGameInfo(nickname, lastMatch)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

@@ -15,7 +15,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.opgg.summoner.R
-import com.opgg.summoner.adapter.GameAdapter
+import com.opgg.summoner.adapter.MatchAdapter
 import com.opgg.summoner.adapter.LeagueAdapter
 import com.opgg.summoner.databinding.ItemImageRoundedBinding
 import com.opgg.summoner.network.models.Game
@@ -126,6 +126,6 @@ fun RecyclerView.setLeagues(items: MutableList<League>) {
 @BindingAdapter("games")
 fun RecyclerView.setGames(items: MutableList<Game>) {
     items.let {
-        (adapter as GameAdapter).setItem(items)
+        (adapter as MatchAdapter).setItem(items)
     }
 }

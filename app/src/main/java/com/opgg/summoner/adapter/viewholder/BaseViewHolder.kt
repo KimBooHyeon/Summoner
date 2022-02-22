@@ -5,6 +5,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.recyclerview.widget.RecyclerView
+import com.opgg.summoner.network.models.Game
 
 abstract class BaseViewHolder(binding: ViewDataBinding): RecyclerView.ViewHolder(binding.root), LifecycleOwner {
 
@@ -13,6 +14,8 @@ abstract class BaseViewHolder(binding: ViewDataBinding): RecyclerView.ViewHolder
     init {
         lifecycleRegistry.currentState = Lifecycle.State.INITIALIZED
     }
+
+    abstract fun bindView(item: Game)
 
     fun onAppear() {
         lifecycleRegistry.currentState = Lifecycle.State.CREATED

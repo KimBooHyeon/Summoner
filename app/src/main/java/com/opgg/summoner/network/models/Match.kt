@@ -34,6 +34,38 @@ data class Game(
     }
 }
 
-data class ResponseGame(
-    var games: MutableList<Game>
+data class Champions(
+    var id: Int,
+    var key: String,
+    var name: String,
+    var imageUrl: String,
+    var games: Int,
+    var kills: Int,
+    var deaths: Int,
+    var assists: Int,
+    var wins: Int,
+    var losses: Int,
+)
+
+data class Positions(
+    var games: Int,
+    var winds: Int,
+    var losses: Int,
+    var position: String,
+    var positionName: String
+)
+
+data class Summary(
+    var wins: Int,
+    var loses: Int,
+    var kills: Int,
+    var deaths: Int,
+    var assists: Int,
+)
+
+data class ResponseMatch(
+    var games: MutableList<Game>,
+    var champions: MutableList<Champions>,
+    var positions: MutableList<Positions>,
+    var summary: Summary,
 )

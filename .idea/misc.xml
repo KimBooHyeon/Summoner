@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/drawable/round_button.xml" value="0.2265625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_summoner.xml" value="0.29981884057971014" />
+        <entry key="app/src/main/res/layout/item_champion.xml" value="0.67" />
         <entry key="app/src/main/res/layout/item_game.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/item_image_rounded.xml" value="0.67" />
         <entry key="app/src/main/res/layout/layer_header.xml" value="0.25" />

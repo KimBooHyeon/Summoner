@@ -6,12 +6,12 @@ import com.opgg.summoner.adapter.viewholder.BaseViewHolder
 import com.opgg.summoner.databinding.ItemGameBinding
 import com.opgg.summoner.network.models.Game
 
-class GameAdapter: BaseAdapter<GameAdapter.GameViewHolder>() {
+class MatchAdapter: BaseAdapter<MatchAdapter.GameViewHolder>() {
     private val items: MutableList<Game> = mutableListOf()
 
 
     inner class GameViewHolder(private val binding: ItemGameBinding): BaseViewHolder(binding) {
-        fun bindView(item: Game) {
+        override fun bindView(item: Game) {
             binding.item = item
         }
     }

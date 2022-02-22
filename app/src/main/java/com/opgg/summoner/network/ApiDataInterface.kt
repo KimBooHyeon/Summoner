@@ -1,6 +1,6 @@
 package com.opgg.summoner.network
 
-import com.opgg.summoner.network.models.ResponseGame
+import com.opgg.summoner.network.models.ResponseMatch
 import com.opgg.summoner.network.models.ResponseSummoner
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
@@ -17,5 +17,5 @@ interface ApiDataInterface {
     fun getSummonerGameInfo(
         @Path("nickname") nickname: String,
         @Query("lastMatch") lastMatch: Long,
-    ): Observable<ResponseGame>
+    ): Observable<ResponseMatch>
 }
