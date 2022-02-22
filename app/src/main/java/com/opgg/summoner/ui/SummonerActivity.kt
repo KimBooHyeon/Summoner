@@ -1,6 +1,5 @@
 package com.opgg.summoner.ui
 
-import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.google.android.material.appbar.AppBarLayout
 import com.opgg.summoner.R
-import com.opgg.summoner.adapter.MatchAdapter
 import com.opgg.summoner.adapter.LeagueAdapter
+import com.opgg.summoner.adapter.MatchAdapter
 import com.opgg.summoner.databinding.ActivitySummonerBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.abs

@@ -15,13 +15,14 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
-import com.opgg.summoner.R
-import com.opgg.summoner.adapter.MatchAdapter
-import com.opgg.summoner.adapter.LeagueAdapter
-import com.opgg.summoner.databinding.ItemImageRoundedBinding
 import com.opgg.summoner.Global
-import com.opgg.summoner.network.models.*
-import java.lang.Exception
+import com.opgg.summoner.R
+import com.opgg.summoner.adapter.LeagueAdapter
+import com.opgg.summoner.adapter.MatchAdapter
+import com.opgg.summoner.databinding.ItemImageRoundedBinding
+import com.opgg.summoner.network.models.Game
+import com.opgg.summoner.network.models.League
+import com.opgg.summoner.network.models.Summary
 
 fun convertHttpString(url: String?): String? {
     var httpString = url

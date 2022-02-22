@@ -2,22 +2,19 @@ package com.opgg.summoner
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import android.util.TypedValue
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class Global: Application() {
+
     companion object {
         lateinit var INSTANCE: Global
     }
+
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
-    }
-
-    fun dLog(content: String) {
-        Log.d("asdf", content)
     }
 
     fun convertDpToPixel(context: Context, dp: Int): Int {

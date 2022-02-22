@@ -1,14 +1,11 @@
 package com.opgg.summoner.ui
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import com.opgg.summoner.network.DataRequest
 import com.opgg.summoner.network.models.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,13 +27,11 @@ class SummonerVM @Inject constructor() : BaseVM() {
     var lastMatch: Long? = null
 
     fun reset() {
-//        nickname.value?.let { getSummonerInfo(it) }
         getSummonerInfo(nickname.value!!)
 
         hasMore = true
         lastMatch = null
         games.value = mutableListOf()
-//        nickname.value?.let { getMatchList(it) }
         getMatchList(nickname.value!!)
     }
 
