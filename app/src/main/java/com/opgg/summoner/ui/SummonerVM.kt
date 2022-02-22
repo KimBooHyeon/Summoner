@@ -26,13 +26,18 @@ class SummonerVM @Inject constructor() : BaseVM() {
     var hasMore: Boolean = true
     var lastMatch: Long? = null
 
+    val isLoading = MutableLiveData<Boolean>()
+
     fun reset() {
+        isLoading.value = true
         getSummonerInfo(nickname.value!!)
 
         hasMore = true
         lastMatch = null
         games.value = mutableListOf()
-        getMatchList(nickname.value!!)
+        getMatchList(nickname.value!!).apply {
+            isLoading.value = false
+        }
     }
 
     fun getSummonerInfo(nickname: String) {

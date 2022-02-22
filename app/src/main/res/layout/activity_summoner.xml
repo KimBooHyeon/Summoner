@@ -69,16 +69,22 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:clipToPadding="false"
-            android:fillViewport="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:games="@{vm.games}"
-            tools:listitem="@layout/item_game"/>
+            app:onRefreshListener="@{() -> vm.reset()}"
+            app:refreshing="@{vm.isLoading}">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fillViewport="true"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:games="@{vm.games}"
+                tools:listitem="@layout/item_game"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
