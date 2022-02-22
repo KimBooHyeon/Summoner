@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Summoner</string>
+    <string name="search_hint">소환사 검색</string>
+    <string name="search">소환사 검색하기</string>
+    <string name="search_error">검색하실 소환사를 입력해주세요.</string>
     <string name="button_score_refresh">전적갱신</string>
     <string name="win">승</string>
     <string name="lose">패</string>

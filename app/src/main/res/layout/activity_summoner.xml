@@ -5,6 +5,9 @@
 
     <data>
         <variable
+            name="activity"
+            type="com.opgg.summoner.ui.SummonerActivity" />
+        <variable
             name="vm"
             type="com.opgg.summoner.ui.SummonerVM" />
     </data>
@@ -37,19 +40,31 @@
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:title="@{vm.name}"
                     app:layout_collapseMode="pin">
-
-                    <TextView
-                        android:id="@+id/tv_toolbar_title"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="@{vm.name}"
-                        android:textColor="@color/dark_grey"
-                        android:textSize="22sp"
-                        android:textStyle="bold"
-                        tools:text="nickname" />
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/iv_back"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_arrow_right"
+                            android:scaleX="-1"
+                            android:onClick="@{() -> activity.back()}"/>
+
+                        <TextView
+                            android:id="@+id/tv_toolbar_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@{vm.name}"
+                            android:textColor="@color/dark_grey"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            tools:text="nickname" />
+                    </RelativeLayout>
                 </androidx.appcompat.widget.Toolbar>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>

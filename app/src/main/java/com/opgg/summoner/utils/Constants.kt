@@ -7,8 +7,5 @@ class Constants {
         val MAX_HOUR = 24
         val MAX_DAY = 30
         val MAX_MONTH = 12
-
-        val VIEWTYPE_CHAMPION = 100
-        var VIEWTYPE_GAME = 101
     }
 }

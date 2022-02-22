@@ -87,6 +87,7 @@
                     android:text="@string/button_score_refresh"
                     android:textColor="@color/white"
                     android:textSize="14sp"
+                    android:onClick="@{() -> vm.reset()}"
                     app:layout_constraintLeft_toRightOf="@id/layout_thumbnail"
                     app:layout_constraintTop_toBottomOf="@id/tv_nickname"/>
             </LinearLayout>
@@ -105,7 +106,7 @@
                 tools:listitem="@layout/item_league"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <include
-            layout="@layout/item_champion"
+            layout="@layout/item_summary"
             app:vm="@{vm}"/>
     </LinearLayout>
 </layout>

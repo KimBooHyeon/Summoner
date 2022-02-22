@@ -13,20 +13,31 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SummonerVM @Inject constructor() : BaseVM() {
+    var nickname = MutableLiveData<String>().apply { value = "" }
+
     var name = MutableLiveData<String>()
     var level = MutableLiveData<Int>()
     var profileImageUrl = MutableLiveData<String>()
     var profileBackgroundImageUrl = MutableLiveData<String>()
     var leagues = MutableLiveData<MutableList<League>>().apply { value = mutableListOf() }
+
     var games = MutableLiveData<MutableList<Game>>().apply { value = mutableListOf() }
     var champions = MutableLiveData<MutableList<Champions>>()
     var positions = MutableLiveData<MutableList<Positions>>()
     var summary = MutableLiveData<Summary>()
-    var lastMatch: Long = 0
 
-    init {
-        getSummonerInfo("Genetory")
-        getMatchList("Genetory")
+    var hasMore: Boolean = true
+    var lastMatch: Long? = null
+
+    fun reset() {
+//        nickname.value?.let { getSummonerInfo(it) }
+        getSummonerInfo(nickname.value!!)
+
+        hasMore = true
+        lastMatch = null
+        games.value = mutableListOf()
+//        nickname.value?.let { getMatchList(it) }
+        getMatchList(nickname.value!!)
     }
 
     fun getSummonerInfo(nickname: String) {
@@ -47,10 +58,18 @@ class SummonerVM @Inject constructor() : BaseVM() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                games.value = it.games
-                champions.value = it.champions
-                positions.value = it.positions
-                summary.value = it.summary
+                if (lastMatch == null) {
+                    champions.value = it.champions
+                    positions.value = it.positions
+                    summary.value = it.summary
+                }
+                val list: MutableList<Game> = games.value!!
+                it.games.forEach {
+                    list.add(it)
+                }
+                games.value = list
+                lastMatch = it.games.last().createDate
+                hasMore = it.games.isNotEmpty()
             }, { t -> t.printStackTrace() })
     }
 }

@@ -23,6 +23,7 @@
             android:textColor="@color/cool_grey"
             android:includeFontPadding="false"/>
         <TextView
+            android:visibility="invisible"
             android:id="@+id/tv_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -23,8 +23,19 @@ import com.opgg.summoner.Global
 import com.opgg.summoner.network.models.*
 import java.lang.Exception
 
+fun convertHttpString(url: String?): String? {
+    var httpString = url
+    url?.let {
+        if (it.startsWith("//")) {
+            httpString = "https:$url"
+        }
+    }
+    return httpString
+}
+
 @BindingAdapter("image")
-fun ImageView.image(imageUrl: String?) {
+fun ImageView.image(src: String?) {
+    val imageUrl = convertHttpString(src)
     Glide.with(context)
         .load(imageUrl)
         .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
@@ -33,8 +44,9 @@ fun ImageView.image(imageUrl: String?) {
 
 @BindingAdapter("image_circle")
 fun ImageView.imageCircle(src: String?) {
+    val imageUrl = convertHttpString(src)
     Glide.with(context)
-        .load(src)
+        .load(imageUrl)
         .apply(RequestOptions.bitmapTransform(CenterCrop()))
         .circleCrop()
         .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
@@ -43,8 +55,9 @@ fun ImageView.imageCircle(src: String?) {
 
 @BindingAdapter("image_round")
 fun ImageView.imageRound(src: String?) {
+    val imageUrl = convertHttpString(src)
     Glide.with(this.context)
-        .load(src)
+        .load(imageUrl)
         .apply(
             RequestOptions.bitmapTransform(
                 MultiTransformation(
