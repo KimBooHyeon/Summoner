@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.opgg.summoner.Global
-import com.opgg.summoner.adapter.viewholder.LeagueViewHolderVM
 import com.opgg.summoner.databinding.ItemLeagueBinding
 import com.opgg.summoner.network.models.League
 

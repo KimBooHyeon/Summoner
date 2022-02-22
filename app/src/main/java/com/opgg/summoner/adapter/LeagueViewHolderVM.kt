@@ -1,4 +1,4 @@
-package com.opgg.summoner.adapter.viewholder
+package com.opgg.summoner.adapter
 
 import com.opgg.summoner.network.models.League
 import dagger.hilt.android.lifecycle.HiltViewModel

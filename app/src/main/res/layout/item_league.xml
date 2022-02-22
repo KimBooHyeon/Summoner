@@ -5,7 +5,7 @@
     <data>
         <variable
             name="vm"
-            type="com.opgg.summoner.adapter.viewholder.LeagueViewHolderVM" />
+            type="com.opgg.summoner.adapter.LeagueViewHolderVM" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="240dp"
