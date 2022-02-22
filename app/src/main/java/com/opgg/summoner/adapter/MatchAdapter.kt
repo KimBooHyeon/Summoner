@@ -2,15 +2,15 @@ package com.opgg.summoner.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.opgg.summoner.adapter.viewholder.BaseViewHolder
+import androidx.recyclerview.widget.RecyclerView
 import com.opgg.summoner.databinding.ItemGameBinding
 import com.opgg.summoner.network.models.Game
 
-class MatchAdapter: BaseAdapter<MatchAdapter.GameViewHolder>() {
+class MatchAdapter: RecyclerView.Adapter<MatchAdapter.GameViewHolder>() {
     private val items: MutableList<Game> = mutableListOf()
 
 
-    inner class GameViewHolder(private val binding: ItemGameBinding): BaseViewHolder(binding) {
+    inner class GameViewHolder(private val binding: ItemGameBinding): RecyclerView.ViewHolder(binding.root) {
         fun bindView(item: Game) {
             binding.item = item
         }
@@ -18,9 +18,7 @@ class MatchAdapter: BaseAdapter<MatchAdapter.GameViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
         ItemGameBinding.inflate(LayoutInflater.from(parent.context), parent, false).let {
-            val holder = GameViewHolder(it)
-            it.lifecycleOwner = holder
-            return holder
+            return GameViewHolder(it)
         }
     }
 
