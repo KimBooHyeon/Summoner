@@ -1,5 +1,6 @@
 package com.opgg.summoner.utils
 
+import android.os.Build
 import android.text.Html
 import android.view.LayoutInflater
 import android.widget.ImageView
@@ -18,9 +19,9 @@ import com.opgg.summoner.R
 import com.opgg.summoner.adapter.MatchAdapter
 import com.opgg.summoner.adapter.LeagueAdapter
 import com.opgg.summoner.databinding.ItemImageRoundedBinding
-import com.opgg.summoner.network.models.Game
-import com.opgg.summoner.network.models.League
 import com.opgg.summoner.Global
+import com.opgg.summoner.network.models.*
+import java.lang.Exception
 
 @BindingAdapter("image")
 fun ImageView.image(imageUrl: String?) {
@@ -55,6 +56,19 @@ fun ImageView.imageRound(src: String?) {
         .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
         .into(this)
 }
+@BindingAdapter("position_image")
+fun ImageView.setPositionImage(position: String?) {
+    Glide.with(context)
+        .load(when(position) {
+            "ADC" -> R.drawable.icon_lol_bot
+            "TOP" -> R.drawable.icon_lol_top
+            "MID" -> R.drawable.icon_lol_mid
+            "SUP" -> R.drawable.icon_lol_sup
+            else -> R.drawable.icon_lol_jng
+        })
+        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+        .into(this)
+}
 
 @BindingAdapter("game_length")
 fun TextView.setGameLength(seconds: Int) {
@@ -65,7 +79,69 @@ fun TextView.setGameLength(seconds: Int) {
 @BindingAdapter("kill", "assist", "death")
 fun TextView.setScore(kill: String, assist: String, death: String) {
     val assistHtmlString = "<font color='#E84057'>$assist</font>"
-    text = Html.fromHtml("$kill / $assistHtmlString / $death")
+    text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        Html.fromHtml("$kill / $assistHtmlString / $death", Html.FROM_HTML_MODE_LEGACY)
+    } else {
+        Html.fromHtml("$kill / $assistHtmlString / $death")
+    }
+}
+
+@BindingAdapter("winning_rate_games", "winning_rate_wins")
+fun TextView.setWinningRate(games: Int, wins: Int) {
+    var percentage = 0
+    try {
+        percentage = wins.times(100).div(games)
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+    text = String.format("%d%%", percentage)
+}
+
+@BindingAdapter("champion_score")
+fun TextView.setChampionScore(summary: Summary?) {
+    var wins = 0
+    var losses = 0
+    summary?.let {
+        wins = it.wins
+        losses = it.loses
+    }
+    text = String.format("%d승 %d패", wins, losses)
+}
+
+@BindingAdapter("champion_kills")
+fun TextView.setChampionKills(summary: Summary?) {
+    var kills = 0
+    var assists = 0
+    var deaths = 0
+    summary?.let {
+        kills = summary.kills
+        assists = summary.assists
+        deaths = summary.deaths
+    }
+    val assistHtmlString = "<font color='#E84057'>$assists</font>"
+    text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        Html.fromHtml("$kills / $assistHtmlString / $deaths", Html.FROM_HTML_MODE_LEGACY)
+    } else {
+        Html.fromHtml("$kills / $assistHtmlString / $deaths")
+    }
+}
+
+@BindingAdapter("champion_kda")
+fun TextView.setChampionKDA(summary: Summary?) {
+    var kda = "0"
+    var percentage = 0
+    summary?.let {
+        kda = String.format("%.2f", ((summary.kills.toFloat() + summary.assists.toFloat()) / summary.deaths.toFloat()))
+        percentage = (summary.wins + summary.assists) / (summary.wins + summary.assists + summary.deaths)
+    }
+    val kdaHtmlString = "<font color='#1EA1F7'>$kda:1</font>"
+    val percentageHtmlString = "<font color='#E84057'>($percentage%)</font>"
+
+    text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        Html.fromHtml("$kdaHtmlString $percentageHtmlString", Html.FROM_HTML_MODE_LEGACY)
+    } else {
+        Html.fromHtml("$kdaHtmlString $percentageHtmlString")
+    }
 }
 
 @BindingAdapter("format_time_string")

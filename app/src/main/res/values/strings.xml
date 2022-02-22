@@ -3,6 +3,8 @@
     <string name="button_score_refresh">전적갱신</string>
     <string name="win">승</string>
     <string name="lose">패</string>
+    <string name="until_20_games">최근 20게임 분석</string>
+
     <string name="contribution_for_kill_rate">킬관여 %s</string>
     <string name="time_seconds_ago">방금 전</string>
     <string name="time_minutes_ago">%d분 전</string>

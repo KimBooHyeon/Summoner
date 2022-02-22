@@ -49,7 +49,7 @@ data class Champions(
 
 data class Positions(
     var games: Int,
-    var winds: Int,
+    var wins: Int,
     var losses: Int,
     var position: String,
     var positionName: String

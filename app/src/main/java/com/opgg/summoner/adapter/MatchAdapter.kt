@@ -11,7 +11,7 @@ class MatchAdapter: BaseAdapter<MatchAdapter.GameViewHolder>() {
 
 
     inner class GameViewHolder(private val binding: ItemGameBinding): BaseViewHolder(binding) {
-        override fun bindView(item: Game) {
+        fun bindView(item: Game) {
             binding.item = item
         }
     }
